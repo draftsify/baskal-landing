@@ -94,42 +94,74 @@ h5{font-family:var(--head);font-weight:600;letter-spacing:-.02em;font-size:1.35r
 .hero h1{margin-bottom:20px}
 .hero .lede{max-width:460px;margin:0 auto 30px}
 /* stage that holds basket + floaters */
-.stage{position:relative;width:min(1000px,100%);height:560px;margin-top:-10px;
-  perspective:1400px}
-.basket-wrap{position:absolute;left:50%;top:52%;transform:translate(-50%,-50%);
-  width:min(440px,74vw);transform-style:preserve-3d;will-change:transform;z-index:2}
-.basket{width:100%;animation:bob 6s ease-in-out infinite}
-.basket img{width:100%;filter:drop-shadow(0 40px 40px rgba(11,11,13,.18))}
-@keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(-14px)}}
+.stage{position:relative;width:min(1000px,100%);height:660px;margin-top:6px;perspective:1600px}
 
-/* floating x-ray elements */
-.xr{position:absolute;width:150px;filter:url(#mblur) drop-shadow(0 18px 20px rgba(10,10,11,.16));
-  opacity:.9;z-index:1;will-change:transform}
-.xr img{width:100%}
-.xr.f1{width:150px;top:6%;right:6%}
-.xr.f2{width:200px;top:34%;right:-2%}
-.xr.f3{width:135px;bottom:8%;right:20%}
-.xr.f4{width:175px;top:16%;left:8%}
-.xr.f5{width:250px;top:46%;left:-6%}
-.xr.f6{width:150px;bottom:6%;left:22%}
-/* bob lives on the inner img so JS can parallax the .xr container */
-@keyframes floaty{0%,100%{transform:translateY(0)}50%{transform:translateY(-22px)}}
-.xr img{animation:floaty 7s ease-in-out infinite}
-.xr.f1 img{animation-duration:7s}
-.xr.f2 img{animation-duration:8.5s;animation-delay:.4s}
-.xr.f3 img{animation-duration:6.4s;animation-delay:.8s}
-.xr.f4 img{animation-duration:7.8s;animation-delay:.2s}
-.xr.f5 img{animation-duration:9s;animation-delay:.6s}
-.xr.f6 img{animation-duration:6.8s;animation-delay:1s}
-.ring .r1 img{animation-duration:7.5s}
-.ring .r2 img{animation-duration:8.8s;animation-delay:.3s}
-.ring .r3 img{animation-duration:6.6s;animation-delay:.7s}
-.ring .r4 img{animation-duration:8s;animation-delay:.5s}
-.ring .r5 img{animation-duration:7.2s;animation-delay:.9s}
+/* ===== PHONE (hero product) ===== */
+.phone-wrap{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);
+  width:296px;max-width:72vw;transform-style:preserve-3d;will-change:transform;z-index:3}
+.phone{position:relative;width:100%;aspect-ratio:296/616;background:#0b0b0d;border-radius:46px;
+  padding:11px;box-shadow:0 46px 70px rgba(11,11,13,.30),inset 0 0 0 2px rgba(255,255,255,.07);
+  animation:bob 6s ease-in-out infinite}
+@keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(-13px)}}
+.phone .screen{width:100%;height:100%;background:#fff;border-radius:36px;overflow:hidden;
+  position:relative;display:flex;flex-direction:column}
+.phone .island{position:absolute;top:11px;left:50%;transform:translateX(-50%);width:90px;height:24px;
+  background:#0b0b0d;border-radius:99px;z-index:6}
+
+/* app screen */
+.app{display:flex;flex-direction:column;height:100%}
+.app-top{padding:46px 18px 6px;display:flex;justify-content:space-between;align-items:center}
+.app-top .t{font-family:var(--head);font-weight:700;font-size:.98rem}
+.app-top .dots{color:var(--ink-40);letter-spacing:2px;font-size:.8rem}
+.app-budget{padding:2px 18px 10px}
+.app-budget .big{font-family:var(--head);font-weight:800;font-size:1.8rem;letter-spacing:-.02em;line-height:1}
+.app-budget .sub{color:var(--ink-40);font-size:.66rem;margin:5px 0 9px}
+.app-budget .track{height:7px;border-radius:99px;background:var(--grey-2);overflow:hidden}
+.app-budget .track i{display:block;height:100%;width:96%;background:var(--sage);border-radius:99px}
+.app-chips{display:flex;gap:6px;padding:12px 16px 8px}
+.app-chips .chip{flex:1;background:var(--grey);border-radius:12px;padding:8px 4px;text-align:center}
+.app-chips .chip b{font-family:var(--head);font-weight:800;font-size:.8rem;display:block;line-height:1.1}
+.app-chips .chip small{font-size:.52rem;color:var(--ink-40);letter-spacing:.05em}
+.app-list{flex:1;overflow:hidden;padding:2px 14px}
+.app-list .lh{font-size:.56rem;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-40);padding:8px 4px 2px}
+.item{display:flex;align-items:center;gap:10px;padding:7px 4px;border-top:1px solid var(--line)}
+.item .th{width:32px;height:32px;border-radius:9px;background:var(--tint);display:grid;place-items:center;font-size:1rem;flex:none}
+.item .nm{flex:1;min-width:0}
+.item .nm b{font-weight:600;font-size:.75rem;display:block}
+.item .nm small{font-size:.6rem;color:var(--ink-40)}
+.item .pr{font-family:var(--head);font-weight:700;font-size:.75rem;font-variant-numeric:tabular-nums}
+.app-cta{margin:8px 14px 14px;background:var(--ink);color:#fff;border-radius:14px;padding:12px;
+  text-align:center;font-weight:700;font-size:.78rem;display:flex;align-items:center;justify-content:center;gap:6px}
+.app-cta svg{width:13px;height:13px}
+
+/* ===== floating UI cards (new visuals) ===== */
+@keyframes floaty{0%,100%{transform:translateY(0)}50%{transform:translateY(-20px)}}
+.uicard{position:absolute;z-index:1;will-change:transform}
+.uicard .bob{display:flex;align-items:center;gap:11px;background:#fff;border-radius:16px;padding:11px 14px;
+  box-shadow:0 20px 34px rgba(11,11,13,.13),0 1px 0 rgba(11,11,13,.04);
+  filter:url(#mblur);animation:floaty 7s ease-in-out infinite}
+.uicard .ic{width:32px;height:32px;border-radius:10px;display:grid;place-items:center;flex:none;
+  font-size:.98rem;background:var(--tint)}
+.uicard .ic.sage{background:var(--sage);color:#fff}
+.uicard .v b{font-family:var(--head);font-weight:800;font-size:.98rem;display:block;line-height:1;letter-spacing:-.01em}
+.uicard .v small{font-size:.6rem;color:var(--ink-40);letter-spacing:.02em}
+.uicard.f1{top:2%;right:2%}
+.uicard.f2{top:30%;right:-5%}
+.uicard.f3{bottom:8%;right:12%}
+.uicard.f4{top:12%;left:0}
+.uicard.f5{top:44%;left:-6%}
+.uicard.f6{bottom:6%;left:12%}
+.uicard.f1 .bob{animation-duration:7s}
+.uicard.f2 .bob{animation-duration:8.5s;animation-delay:.4s}
+.uicard.f3 .bob{animation-duration:6.4s;animation-delay:.8s}
+.uicard.f4 .bob{animation-duration:7.8s;animation-delay:.2s}
+.uicard.f5 .bob{animation-duration:9s;animation-delay:.6s}
+.uicard.f6 .bob{animation-duration:6.8s;animation-delay:1s}
 @media(max-width:820px){
-  .stage{height:420px}
-  .xr.f2,.xr.f5{display:none}
-  .xr{width:110px!important}
+  .stage{height:560px}
+  .uicard.f2,.uicard.f5{display:none}
+  .uicard .bob{padding:9px 11px;gap:9px}
+  .uicard .v b{font-size:.85rem}
 }
 
 /* ============ generic section padding ============ */
@@ -180,8 +212,8 @@ h5{font-family:var(--head);font-weight:600;letter-spacing:-.02em;font-size:1.35r
   font-size:.85rem;margin-bottom:26px}
 .allinone h2{color:#fff;margin-bottom:18px}
 .allinone p{color:rgba(255,255,255,.8);max-width:560px;margin:0 auto 30px}
-.allinone .basket-dark{width:min(320px,70vw);margin:34px auto 0;animation:bob 6s ease-in-out infinite}
-.allinone .basket-dark img{width:100%;filter:invert(1) brightness(1.6) drop-shadow(0 30px 40px rgba(0,0,0,.4))}
+.allinone .phone-hold{width:290px;max-width:78vw;margin:44px auto 0}
+.allinone .phone{box-shadow:0 50px 80px rgba(0,0,0,.5),inset 0 0 0 2px rgba(255,255,255,.12)}
 
 /* ============ INGREDIENTS / RULES ============ */
 .rules-wrap{background:var(--tint)}
@@ -196,8 +228,7 @@ h5{font-family:var(--head);font-weight:600;letter-spacing:-.02em;font-size:1.35r
 .rule .ic{width:30px;height:30px;color:var(--sage)}
 .rule h5{font-size:1.15rem}
 .rule p{color:var(--ink-70);font-size:.95rem}
-.rule-mid{flex:none;width:min(340px,60vw)}
-.rule-mid img{width:100%}
+.rule-mid{flex:none;width:288px;max-width:64vw}
 
 /* ============ FEATURE CARDS ============ */
 .feat{display:flex;flex-direction:column;gap:96px}
@@ -231,21 +262,26 @@ h5{font-family:var(--head);font-weight:600;letter-spacing:-.02em;font-size:1.35r
 .intro h2{color:#fff;font-size:clamp(2.6rem,8vw,5rem);font-weight:800;line-height:1}
 .intro .sub{letter-spacing:.9em;font-family:var(--head);font-weight:800;margin-top:16px;
   font-size:clamp(1rem,2vw,1.4rem);padding-left:.9em}
-.ring{position:relative;width:min(560px,90vw);aspect-ratio:1;margin:20px auto -60px}
-.ring .xr{position:absolute;filter:url(#mblur)}
-.ring .xr img{filter:invert(1) brightness(1.7) contrast(.9);opacity:.75}
-.ring .r1{width:20%;top:10%;left:14%}
-.ring .r2{width:26%;top:22%;right:6%}
-.ring .r3{width:17%;bottom:20%;left:8%}
-.ring .r4{width:23%;bottom:8%;right:18%}
-.ring .r5{width:15%;top:44%;left:40%}
+.ring{position:relative;width:min(620px,92vw);height:340px;margin:34px auto -50px}
+.ring .uicard{position:absolute}
+.ring .uicard .bob{animation:floaty 7.5s ease-in-out infinite}
+.ring .r1{top:2%;left:4%}
+.ring .r2{top:14%;right:2%}
+.ring .r3{bottom:8%;left:8%}
+.ring .r4{bottom:0;right:14%}
+.ring .r5{top:40%;left:40%}
+.ring .r2 .bob{animation-delay:.3s;animation-duration:8.6s}
+.ring .r3 .bob{animation-delay:.7s;animation-duration:6.6s}
+.ring .r4 .bob{animation-delay:.5s;animation-duration:8s}
+.ring .r5 .bob{animation-delay:.9s;animation-duration:7.1s}
+@media(max-width:680px){.ring .r2,.ring .r5{display:none}}
 
 /* ============ BUY ============ */
 .buy{display:flex;gap:60px;align-items:flex-start}
 @media(max-width:900px){.buy{flex-direction:column}}
-.buy-media{flex:1;position:sticky;top:100px;background:var(--grey);border-radius:22px;padding:20px;
+.buy-media{flex:1;position:sticky;top:100px;background:var(--tint);border-radius:22px;padding:40px 20px;
   display:flex;align-items:center;justify-content:center}
-.buy-media img{width:80%;filter:drop-shadow(0 20px 30px rgba(0,0,0,.15))}
+.buy-media .phone{width:270px;max-width:80%;animation:none}
 @media(max-width:900px){.buy-media{position:relative;top:0;width:100%}}
 .buy-info{flex:1;max-width:550px}
 .stars{display:flex;gap:3px;color:var(--gold)}
@@ -329,7 +365,7 @@ h5{font-family:var(--head);font-weight:600;letter-spacing:-.02em;font-size:1.35r
 <!-- SVG motion-blur filter -->
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
   <filter id="mblur" x="-25%" y="-45%" width="150%" height="190%">
-    <feGaussianBlur stdDeviation="0.4 1.6"/>
+    <feGaussianBlur stdDeviation="0.3 1.0"/>
   </filter>
 </svg>
 
@@ -367,14 +403,40 @@ h5{font-family:var(--head);font-weight:600;letter-spacing:-.02em;font-size:1.35r
     <a href="#buy" class="btn btn-dark">Get your list</a>
   </div>
   <div class="stage" id="stage">
-    <div class="xr f1" data-depth="1.4"><img src="assets/xray/banana.png" alt=""></div>
-    <div class="xr f2" data-depth="1.9"><img src="assets/xray/fish.png" alt=""></div>
-    <div class="xr f3" data-depth="1.2"><img src="assets/xray/pepper.png" alt=""></div>
-    <div class="xr f4" data-depth="1.6"><img src="assets/xray/can.png" alt=""></div>
-    <div class="xr f5" data-depth="2.1"><img src="assets/xray/eggs.png" alt=""></div>
-    <div class="xr f6" data-depth="1.3"><img src="assets/xray/bottle.png" alt=""></div>
-    <div class="basket-wrap" id="basketWrap">
-      <div class="basket"><img src="assets/img/basket.png" alt="Empty shopping basket"></div>
+    <div class="uicard f1" data-depth="1.5"><div class="bob"><div class="ic">💷</div><div class="v"><b>£40</b><small>Weekly budget</small></div></div></div>
+    <div class="uicard f2" data-depth="2.0"><div class="bob"><div class="ic">🔥</div><div class="v"><b>1,800</b><small>Kcal / day</small></div></div></div>
+    <div class="uicard f3" data-depth="1.3"><div class="bob"><div class="ic">💪</div><div class="v"><b>118g</b><small>Protein goal</small></div></div></div>
+    <div class="uicard f4" data-depth="1.7"><div class="bob"><div class="ic">🏪</div><div class="v"><b>Tesco</b><small>Live prices</small></div></div></div>
+    <div class="uicard f5" data-depth="2.1"><div class="bob"><div class="ic sage">✓</div><div class="v"><b>Every goal met</b><small>In one basket</small></div></div></div>
+    <div class="uicard f6" data-depth="1.4"><div class="bob"><div class="ic">💸</div><div class="v"><b>−£6.00</b><small>Under budget</small></div></div></div>
+    <div class="phone-wrap" id="phoneWrap">
+      <div class="phone">
+        <div class="island"></div>
+        <div class="screen">
+          <div class="app">
+            <div class="app-top"><span class="t">Weekly basket</span><span class="dots">•••</span></div>
+            <div class="app-budget">
+              <div class="big">£38.50</div>
+              <div class="sub">of £40.00 budget · Tesco</div>
+              <div class="track"><i></i></div>
+            </div>
+            <div class="app-chips">
+              <div class="chip"><b>1,790</b><small>KCAL</small></div>
+              <div class="chip"><b>118g</b><small>PROTEIN</small></div>
+              <div class="chip"><b>24</b><small>ITEMS</small></div>
+            </div>
+            <div class="app-list">
+              <div class="lh">Your groceries</div>
+              <div class="item"><div class="th">🍗</div><div class="nm"><b>Chicken breast</b><small>1 kg</small></div><div class="pr">£5.20</div></div>
+              <div class="item"><div class="th">🥣</div><div class="nm"><b>Rolled oats</b><small>1 kg</small></div><div class="pr">£1.90</div></div>
+              <div class="item"><div class="th">🥚</div><div class="nm"><b>Free-range eggs</b><small>12 pack</small></div><div class="pr">£2.10</div></div>
+              <div class="item"><div class="th">🥦</div><div class="nm"><b>Broccoli</b><small>400 g</small></div><div class="pr">£0.65</div></div>
+              <div class="item"><div class="th">🫐</div><div class="nm"><b>Greek yogurt</b><small>500 g</small></div><div class="pr">£1.40</div></div>
+            </div>
+            <div class="app-cta">Send to Tesco <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </section>
@@ -453,7 +515,35 @@ h5{font-family:var(--head);font-weight:600;letter-spacing:-.02em;font-size:1.35r
   <h2>The all-in-one grocery brain</h2>
   <p>Budget, calories, nutrition and your store — Baskal weighs them all together and hands you one basket that fits every goal.</p>
   <a href="#buy" class="btn btn-light">Get your list</a>
-  <div class="basket-dark"><img src="assets/img/basket.png" alt=""></div>
+  <div class="phone-hold">
+    <div class="phone">
+      <div class="island"></div>
+      <div class="screen">
+        <div class="app">
+          <div class="app-top"><span class="t">Weekly basket</span><span class="dots">•••</span></div>
+          <div class="app-budget">
+            <div class="big">£38.50</div>
+            <div class="sub">of £40.00 budget · Tesco</div>
+            <div class="track"><i></i></div>
+          </div>
+          <div class="app-chips">
+            <div class="chip"><b>1,790</b><small>KCAL</small></div>
+            <div class="chip"><b>118g</b><small>PROTEIN</small></div>
+            <div class="chip"><b>24</b><small>ITEMS</small></div>
+          </div>
+          <div class="app-list">
+            <div class="lh">Your groceries</div>
+            <div class="item"><div class="th">🍗</div><div class="nm"><b>Chicken breast</b><small>1 kg</small></div><div class="pr">£5.20</div></div>
+            <div class="item"><div class="th">🥣</div><div class="nm"><b>Rolled oats</b><small>1 kg</small></div><div class="pr">£1.90</div></div>
+            <div class="item"><div class="th">🥚</div><div class="nm"><b>Free-range eggs</b><small>12 pack</small></div><div class="pr">£2.10</div></div>
+            <div class="item"><div class="th">🥦</div><div class="nm"><b>Broccoli</b><small>400 g</small></div><div class="pr">£0.65</div></div>
+            <div class="item"><div class="th">🫐</div><div class="nm"><b>Greek yogurt</b><small>500 g</small></div><div class="pr">£1.40</div></div>
+          </div>
+          <div class="app-cta">Send to Tesco <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div>
+        </div>
+      </div>
+    </div>
+  </div>
 </section>
 
 <!-- RULES / WHAT'S INSIDE -->
@@ -478,7 +568,35 @@ h5{font-family:var(--head);font-weight:600;letter-spacing:-.02em;font-size:1.35r
           <div><h5>Macro goals</h5><p>Protein, carbs and fats balanced to your ratio.</p></div>
         </div>
       </div>
-      <div class="rule-mid"><img src="assets/img/basket.png" alt=""></div>
+      <div class="rule-mid">
+        <div class="phone">
+          <div class="island"></div>
+          <div class="screen">
+            <div class="app">
+              <div class="app-top"><span class="t">Weekly basket</span><span class="dots">•••</span></div>
+              <div class="app-budget">
+                <div class="big">£38.50</div>
+                <div class="sub">of £40.00 budget · Tesco</div>
+                <div class="track"><i></i></div>
+              </div>
+              <div class="app-chips">
+                <div class="chip"><b>1,790</b><small>KCAL</small></div>
+                <div class="chip"><b>118g</b><small>PROTEIN</small></div>
+                <div class="chip"><b>24</b><small>ITEMS</small></div>
+              </div>
+              <div class="app-list">
+                <div class="lh">Your groceries</div>
+                <div class="item"><div class="th">🍗</div><div class="nm"><b>Chicken breast</b><small>1 kg</small></div><div class="pr">£5.20</div></div>
+                <div class="item"><div class="th">🥣</div><div class="nm"><b>Rolled oats</b><small>1 kg</small></div><div class="pr">£1.90</div></div>
+                <div class="item"><div class="th">🥚</div><div class="nm"><b>Free-range eggs</b><small>12 pack</small></div><div class="pr">£2.10</div></div>
+                <div class="item"><div class="th">🥦</div><div class="nm"><b>Broccoli</b><small>400 g</small></div><div class="pr">£0.65</div></div>
+                <div class="item"><div class="th">🫐</div><div class="nm"><b>Greek yogurt</b><small>500 g</small></div><div class="pr">£1.40</div></div>
+              </div>
+              <div class="app-cta">Send to Tesco <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div>
+            </div>
+          </div>
+        </div>
+      </div>
       <div class="rule-col">
         <div class="rule">
           <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l1-5h16l1 5M4 9v11h16V9M9 20v-6h6v6"/></svg>
@@ -557,18 +675,46 @@ h5{font-family:var(--head);font-weight:600;letter-spacing:-.02em;font-size:1.35r
   <h2>BASKAL</h2>
   <div class="sub">GROCERIES</div>
   <div class="ring">
-    <div class="xr r1"><img src="assets/xray/banana.png" alt=""></div>
-    <div class="xr r2"><img src="assets/xray/fish.png" alt=""></div>
-    <div class="xr r3"><img src="assets/xray/pepper.png" alt=""></div>
-    <div class="xr r4"><img src="assets/xray/can.png" alt=""></div>
-    <div class="xr r5"><img src="assets/xray/bottle.png" alt=""></div>
+    <div class="uicard r1"><div class="bob"><div class="ic">💷</div><div class="v"><b>£40</b><small>Weekly budget</small></div></div></div>
+    <div class="uicard r2"><div class="bob"><div class="ic">🔥</div><div class="v"><b>1,800</b><small>Kcal / day</small></div></div></div>
+    <div class="uicard r3"><div class="bob"><div class="ic">💪</div><div class="v"><b>118g</b><small>Protein goal</small></div></div></div>
+    <div class="uicard r4"><div class="bob"><div class="ic sage">✓</div><div class="v"><b>Every goal met</b><small>In one basket</small></div></div></div>
+    <div class="uicard r5"><div class="bob"><div class="ic">🏪</div><div class="v"><b>Tesco</b><small>Live prices</small></div></div></div>
   </div>
 </section>
 
 <!-- BUY -->
 <section class="sec" id="buy">
   <div class="wrap buy">
-    <div class="buy-media"><img src="assets/img/basket.png" alt="Baskal basket"></div>
+    <div class="buy-media">
+      <div class="phone">
+        <div class="island"></div>
+        <div class="screen">
+          <div class="app">
+            <div class="app-top"><span class="t">Weekly basket</span><span class="dots">•••</span></div>
+            <div class="app-budget">
+              <div class="big">£38.50</div>
+              <div class="sub">of £40.00 budget · Tesco</div>
+              <div class="track"><i></i></div>
+            </div>
+            <div class="app-chips">
+              <div class="chip"><b>1,790</b><small>KCAL</small></div>
+              <div class="chip"><b>118g</b><small>PROTEIN</small></div>
+              <div class="chip"><b>24</b><small>ITEMS</small></div>
+            </div>
+            <div class="app-list">
+              <div class="lh">Your groceries</div>
+              <div class="item"><div class="th">🍗</div><div class="nm"><b>Chicken breast</b><small>1 kg</small></div><div class="pr">£5.20</div></div>
+              <div class="item"><div class="th">🥣</div><div class="nm"><b>Rolled oats</b><small>1 kg</small></div><div class="pr">£1.90</div></div>
+              <div class="item"><div class="th">🥚</div><div class="nm"><b>Free-range eggs</b><small>12 pack</small></div><div class="pr">£2.10</div></div>
+              <div class="item"><div class="th">🥦</div><div class="nm"><b>Broccoli</b><small>400 g</small></div><div class="pr">£0.65</div></div>
+              <div class="item"><div class="th">🫐</div><div class="nm"><b>Greek yogurt</b><small>500 g</small></div><div class="pr">£1.40</div></div>
+            </div>
+            <div class="app-cta">Send to Tesco <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div>
+          </div>
+        </div>
+      </div>
+    </div>
     <div class="buy-info">
       <div class="rev-row">
         <span class="stars">★★★★★</span>
@@ -682,8 +828,8 @@ h5{font-family:var(--head);font-weight:600;letter-spacing:-.02em;font-size:1.35r
   var reduce = window.matchMedia('(prefers-reduced-motion:reduce)').matches;
   if(reduce) return;
   var stage = document.getElementById('stage');
-  var wrap = document.getElementById('basketWrap');
-  var floaters = Array.prototype.slice.call(document.querySelectorAll('#stage .xr'));
+  var wrap = document.getElementById('phoneWrap');
+  var floaters = Array.prototype.slice.call(document.querySelectorAll('#stage .uicard'));
   var mx=0,my=0, tmx=0,tmy=0;
 
   // pointer tilt
@@ -699,10 +845,10 @@ h5{font-family:var(--head);font-weight:600;letter-spacing:-.02em;font-size:1.35r
     // scroll progress through hero
     var r = stage.getBoundingClientRect();
     var p = 1 - Math.max(0, Math.min(1, (r.top + r.height) / (window.innerHeight + r.height)));
-    var spin = mx*22 + (p-0.4)*26;
+    var spin = mx*15 + (p-0.4)*16;
     var lift = -p*40;
-    var tiltX = -my*10;
-    var sc = 1 - p*0.06;
+    var tiltX = -my*8;
+    var sc = 1 - p*0.05;
     if(wrap){
       wrap.style.transform = 'translate(-50%,-50%) translateY('+lift+'px) rotateX('+tiltX+'deg) rotateY('+spin+'deg) scale('+sc+')';
     }
